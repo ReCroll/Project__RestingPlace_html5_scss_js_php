@@ -129,7 +129,7 @@ $(".to-play").click(function () {
 });
 
 function onPlayerReady(event) {
-  let video = event.target.h;
+  let video = event.target.g;
   $(video).siblings(".to-play").addClass("removed__img");
   event.target.playVideo();
 }
@@ -203,17 +203,189 @@ if (avatarIcons) {
     });
   }
 }
+//================================= POPUP ============================
+//============================== POPUP =========================
 
-// ================== зміна ширини та висоти Email-блока ============
+const body = document.querySelector("body");
+const lockPadding = document.querySelectorAll(".lock__padding");
 
-// $(window).resize(function (){
-//     var width = $('body').innerWidth();
-//     if (width < 630) {
-//         $('.news__button-block').addClass('_fg');
-//     } else {
-//         $('.news__button-block').removeClass('_fg');
-//     }
-// });
+let unlock = true;
+const timeout = 800;
+
+const ollElementsArray = [];
+let popupContentWraps;
+let getPreCard;
+let getElementsAttr;
+
+//==========================================================================
+
+function popupOpen(currentPopup) {
+  if (unlock) {
+    const popupActive = document.querySelector(".popup._open");
+    if (popupActive) {
+      popupClose(popupActive, currentPopup, false);
+      // popupFormClose(popupActive);
+    } else {
+      bodyLock();
+    }
+    currentPopup.classList.add("_open");
+  }
+  const popupCloseIcon = currentPopup.querySelectorAll(".close-popup");
+  if (popupCloseIcon.length > 0) {
+    for (let index = 0; index < popupCloseIcon.length; index++) {
+      const el = popupCloseIcon[index];
+      el.addEventListener("click", function (e) {
+        popupClose(el.closest(".popup"), currentPopup);
+        // e.preventDefault();
+      });
+    }
+  }
+}
+//==============================================================================
+//==============================================================================
+
+//==============================================================================
+
+function popupClose(popupActive, currentPopup, doUnlock = true) {
+  if (!currentPopup.classList.contains(".popup__close")) {
+    // goBackProduct(currentPopup);
+    popupActive.classList.remove("_open");
+
+    if (doUnlock) {
+      bodyUnLock();
+    }
+  }
+}
+
+//================================================================================
+
+function popupFormClose(popupFormActive) {
+  popupFormActive.addEventListener("click", function (e) {
+    if (!e.target.closest(".popup__form-content")) {
+      popupFormActive.classList.remove("_open");
+      bodyUnLock();
+    }
+    // if (
+    //   doUnlock &&
+    //   popupFormActive.classList.contains("_close__popup-anchor")
+    // ) {
+    //   bodyUnLock();
+    // }
+    e.preventDefault();
+  });
+}
+
+//==============================================================================
+function bodyLock() {
+  const lockPaddingValue =
+    window.innerWidth - document.querySelector(".wrapper").offsetWidth + "px";
+
+  if (lockPadding.length > 0) {
+    for (let index = 0; index < lockPadding.length; index++) {
+      const el = lockPadding[index];
+      el.style.paddingRight = lockPaddingValue;
+    }
+  }
+  body.style.paddingRight = lockPaddingValue;
+  body.classList.add("_lock");
+  unlock = false;
+  setTimeout(function () {
+    unlock = true;
+  }, timeout);
+}
+//==============================================================================
+
+//==============================================================================
+function bodyUnLock() {
+  setTimeout(function () {
+    if (lockPadding.length > 0) {
+      for (let index = 0; index < lockPadding.length; index++) {
+        const el = lockPadding[index];
+        el.style.paddingRight = "0px";
+      }
+    }
+    body.style.paddingRight = "0px";
+    body.classList.remove("_lock");
+  }, timeout);
+
+  unlock = false;
+  setTimeout(function () {
+    unlock = true;
+  }, timeout);
+}
+
+//========================== SEND FORM & SHOW POPUP ===================
+
+document.addEventListener("DOMContentLoaded", function () {
+  // let form = document.getElementById("form__phone");
+  let formEmail = document.getElementById("form__email");
+
+  formEmail.addEventListener("submit", formSendEmail);
+
+  async function formSendEmail(e) {
+    e.preventDefault();
+
+    let error = formValidate(formEmail);
+
+    let formDataEmail = new FormData(formEmail);
+    if (error === 0) {
+      // sending.classList.add("sending");
+      let response = await fetch("sendmail.php", {
+        method: "POST",
+        body: formDataEmail,
+      });
+      // let response = true;
+      if (response.ok) {
+        // console.log("response ok");
+        popupOpen(popupFormSuccess);
+        popupFormClose(popupFormSuccess);
+        formEmail.reset();
+        // sending.classList.remove("sending");
+      } else {
+        // console.log("ERROR");
+        popupOpen(popupFormError);
+        // sending.classList.remove("sending");
+        popupFormClose(popupFormError);
+      }
+    } else {
+      // console.log("warning");
+      popupOpen(popupFormEmailWarning);
+      // sending.classList.remove("sending");
+      popupFormClose(popupFormEmailWarning);
+    }
+  }
+
+  function formValidate(form, telInput) {
+    let error = 0;
+    let formReg = form.querySelectorAll(".req");
+    for (let index = 0; index < formReg.length; index++) {
+      const input = formReg[index];
+      formRemoveError(input);
+      if (input.classList.contains("_email")) {
+        if (emailTest(input)) {
+          formAddError(input);
+          error++;
+        }
+      }
+    }
+    return error;
+  }
+
+  function formAddError(input) {
+    input.parentElement.classList.add("error");
+    input.classList.add("error");
+    // }
+  }
+  function formRemoveError(input) {
+    if (input.classList.contains("error")) {
+      input.parentElement.classList.remove("error");
+      input.classList.remove("error");
+    }
+  }
+  function emailTest(input) {
+    return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
+  }
+});
 
 // ==================== BTN-HOME ====================
 $(document).ready(function () {
