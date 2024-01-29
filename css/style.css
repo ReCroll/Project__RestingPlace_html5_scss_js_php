@@ -476,19 +476,14 @@ body._lock {
     -moz-column-gap: calc(10px + 45 * (100vw - 320px) / 980);
          column-gap: calc(10px + 45 * (100vw - 320px) / 980);
   }
+  .sponsors__content {
+    text-align: center;
+  }
 }
 @media (max-width: 750.98px) {
   .sponsors__logos {
     flex-wrap: wrap;
     justify-content: space-around;
-  }
-  .sponsors__content {
-    text-align: center;
-  }
-}
-@media (max-width: 565.98px) {
-  .sponsors__content {
-    text-align: center;
   }
 }
 @media (max-width: 369.98px) {
@@ -622,7 +617,6 @@ body._lock {
   }
   .services__info {
     width: 100%;
-    text-align: start;
   }
 }
 @media (max-width: 733.98px) {
@@ -761,6 +755,7 @@ body._lock {
   .video__wrap,
   .slider__video {
     display: block;
+    text-align: center;
   }
   .video__file {
     min-width: 550px;
@@ -771,9 +766,6 @@ body._lock {
   }
 }
 @media (max-width: 733.98px) {
-  .video__content {
-    text-align: center;
-  }
   .video__file {
     min-width: 0px;
   }
@@ -913,6 +905,7 @@ body._lock {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: height 0.3s ease 0s;
 }
 
 .coment__attachment {
@@ -923,6 +916,7 @@ body._lock {
 
 .coment__text {
   margin-bottom: 40px;
+  height: 12.5rem;
 }
 
 .coment__attachment {
@@ -1094,6 +1088,9 @@ body._lock {
     flex-direction: column;
     align-items: center;
     margin: 40px 0px 0px 0px;
+  }
+  .coments__block .coment__text {
+    height: 100px;
   }
   .coment__content {
     width: 100%;
@@ -1989,6 +1986,7 @@ input.error::placeholder {
   justify-content: center;
   font-size: 2.5rem;
   line-height: 2rem;
+  text-align: center;
   margin: 1.5rem 1.875rem 0 1.875rem;
 }
 .popup__form .popup__body .popup__form-content .popup__text p {
@@ -2309,4 +2307,12 @@ input.error::placeholder {
 .top-btn:hover .top-arrow {
   border-color: #FFFFFF;
   transition: 0.5s;
+}
+
+@media (max-width: 47.99875em) {
+  .btn-top-wrapper {
+    position: fixed;
+    right: calc(20px + 30 * (100vw - 320px) / 447.98);
+    bottom: calc(20px + 30 * (100vw - 320px) / 447.98);
+  }
 }/*# sourceMappingURL=style.css.map */
