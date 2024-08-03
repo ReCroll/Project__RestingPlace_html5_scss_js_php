@@ -67,7 +67,7 @@ if (iconMenu) {
 
 // прокрутка к блоку
 
-const menuLinks = document.querySelectorAll(".menu__link[data-goto]");
+const menuLinks = document.querySelectorAll("._goto-mode[data-goto]");
 if (menuLinks.length > 0) {
   menuLinks.forEach((menuLink) => {
     menuLink.addEventListener("click", onMenuLinkClick);
