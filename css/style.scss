@@ -378,14 +378,14 @@ body._lock {
     margin-bottom: 0px;
   }
 
-  .banner__content {
+  .banner__tapes {
     img {
       filter: blur(4px);
     }
 
   }
 
-  .banner__content-info {
+  .banner__content {
     // width: calc(220px + (460 - 220) * ((100vw - 991.98px) / (1400 - 991.98)));
     max-width: 550px;
   }
@@ -419,11 +419,7 @@ body._lock {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-
-.banner__content {
-  .img__wrap {
+  .banner__img {
     position: relative;
     position: absolute;
     z-index: -1;
@@ -446,47 +442,50 @@ body._lock {
       max-width: 1055px;
       min-width: 744px;
     }
+
   }
-
-
+  .banner__img::before {
+    content: "";
+    position: absolute;
+    width: 129px;
+    height: 129px;
+    border-radius: 50%;
+    z-index: -2;
+    top: 0%;
+    left: -8%;
+    background-color: #DAE9FF;
+  }
 }
 
-.img__wrap::before {
-  content: "";
-  position: absolute;
-  width: 129px;
-  height: 129px;
-  border-radius: 50%;
-  z-index: -2;
-  top: 0%;
-  left: -8%;
-  background-color: #DAE9FF;
-}
 
-.content__info {
+
+
+
+
+.content-info {
   position: relative;
   width: calc(220px + (460 - 220) * ((100vw - 991.98px) / (1720 - 991.98)));
   // max-width: 550px;
 }
 
 @media (max-width: 991.98px) {
-  .banner__content-info {
+  .banner__content {
     // width: calc(220px + (460 - 220) * ((100vw - 991.98px) / (1400 - 991.98)));
     width: 550px;
   }
 }
 
 
-.banner__info-title {
+.banner__title {
   margin-bottom: calc(30px + (40 - 30) * ((100vw - 320px) / (1250 - 320)));
 }
 
-.info__text {
+.info-text {
   margin-bottom: calc(20px + (30 - 20) * ((100vw - 320px) / (1250 - 320)));
 }
 
 
-.info__btn {
+.info-btn {
   button {
     height: 65px;
     width: 215px;
@@ -532,7 +531,7 @@ body._lock {
 }
 
 
-.dots__block {
+.dots-block {
   position: absolute;
   width: 408px;
   height: 160px;
@@ -561,7 +560,7 @@ body._lock {
   left: -50px;
 }
 
-.sponsors__tapes {
+.sponsors {
   position: relative;
   // align-items: flex-end;
   // flex: 50% 50% auto;
@@ -574,7 +573,7 @@ body._lock {
   margin-top: calc(80px + (136 - 80) * ((100vw - 320px) / (1250 - 320)));
 }
 
-.sponsors__tapes::before {
+.sponsors::before {
   content: "";
   position: absolute;
   top: -200px;
@@ -591,7 +590,7 @@ body._lock {
   width: 350px;
 }
 
-.sponsors__logos {
+.sponsors__logo {
   // position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -599,7 +598,7 @@ body._lock {
   justify-content: space-between;
 }
 
-.sponsor__logo {
+.sponsor-logo__item {
 
   min-height: 60px;
   display: flex;
@@ -608,12 +607,12 @@ body._lock {
   cursor: pointer;
 }
 
-.sponsors__logos div:last-child {
+.sponsors__logo div:last-child {
   align-items: flex-end;
 }
 
 @media (max-width: 1229.98px) {
-  .sponsors__tapes {
+  .sponsors {
     display: block;
   }
 
@@ -623,7 +622,7 @@ body._lock {
 }
 
 @media (max-width: 991.98px) {
-  .sponsors__logos {
+  .sponsors__logo {
     column-gap: calc(10px + (55 - 10) * ((100vw - 320px) / (1300 - 320)));
     // flex-wrap: wrap;
   }
@@ -633,7 +632,7 @@ body._lock {
 }
 
 @media (max-width: 750.98px) {
-  .sponsors__logos {
+  .sponsors__logo {
     // column-gap: calc(10px + (55 - 10) * ((100vw - 320px) / (992 - 320)));
     flex-wrap: wrap;
     justify-content: space-around;
@@ -655,7 +654,7 @@ body._lock {
   // .sponsors__content {
   //     text-align: center;
   // }
-  .sponsors__logos {
+  .sponsors__logo {
     display: block;
     text-align: center;
   }
@@ -672,7 +671,7 @@ body._lock {
   justify-content: space-around;
 }
 
-.main__section::before {
+.services::before {
   content: "";
   position: absolute;
   right: 0;
@@ -685,7 +684,7 @@ body._lock {
   border-radius: 150px 0px 0px 0px;
 }
 
-.services__types {
+.services__wrap {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -694,7 +693,7 @@ body._lock {
   min-height: 840px;
 }
 
-.services__types::before {
+.services__wrap::before {
   content: "";
   position: absolute;
   top: 32%;
@@ -707,7 +706,7 @@ body._lock {
 
 }
 
-.services__types {
+.services__wrap {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -722,7 +721,7 @@ body._lock {
   left: 0;
 }
 
-.service__types {
+.services__types {
   min-height: 840px;
   // align-items: flex-end;
   display: flex;
@@ -730,11 +729,11 @@ body._lock {
   padding: 0px 20px 0px 20px;
 }
 
-// .service__types div:first-child {
+// .services__types div:first-child {
 //     align-items:flex-end;
 //     // text-align: center;
 // }
-.columns__services {
+.services__column {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
@@ -744,7 +743,7 @@ body._lock {
   justify-content: flex-end;
 }
 
-.type__service {
+.services__element {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -761,7 +760,7 @@ body._lock {
 
 }
 
-.type__service.circle::before {
+.services__element.services__element_circle::before {
   content: "";
   position: absolute;
   // right: calc(15px + (101 - 15) * ((100vw - 320px) / (1250 - 320)));
@@ -775,7 +774,7 @@ body._lock {
   border: 8.8px solid #FF007A;
 }
 
-.type__icon {
+.element__icon {
   width: 121px;
   height: 121px;
   background: #F1F7FF;
@@ -786,12 +785,12 @@ body._lock {
   margin-bottom: 30px;
 }
 
-.type__title {
+.element__title {
   margin-bottom: 30px;
 }
 
 @media (max-width: 991.98px) {
-  .services__types {
+  .services__wrap {
     display: block;
     text-align: center;
     // justify-content: space-between;
@@ -800,7 +799,7 @@ body._lock {
     // min-height: 840px;
   }
 
-  .service__types {
+  .services__types {
     // display: block;
     // text-align: start;
     // padding: 0px 0px 0px 0px;
@@ -818,7 +817,7 @@ body._lock {
 }
 
 @media (max-width: 733.98px) {
-  .service__types {
+  .services__types {
     display: block;
   }
 
@@ -826,17 +825,17 @@ body._lock {
     text-align: center;
   }
 
-  .type__service {
+  .services__element {
     width: 100%;
   }
 
-  .column__one {
+  .services__column_first-column {
     margin-bottom: 20px;
   }
 }
 
 @media (max-width: 398.98px) {
-  .type__service {
+  .services__element {
     padding: 20px 20px 25px 20px;
   }
 }
