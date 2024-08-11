@@ -247,7 +247,7 @@ function popupOpen(currentPopup) {
 //==============================================================================
 
 function popupClose(popupActive, currentPopup, doUnlock = true) {
-  if (!currentPopup.classList.contains(".popup__close")) {
+  if (!currentPopup.classList.contains(".popup__button")) {
     // goBackProduct(currentPopup);
     popupActive.classList.remove("_open");
 
