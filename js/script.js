@@ -110,7 +110,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 
-$(".to-play").click(function () {
+$(".video-iframe__img-plug").click(function () {
   let btn = $(this),
     videoID = btn.data("video"),
     playerID = btn.data("id");
@@ -130,7 +130,7 @@ $(".to-play").click(function () {
 
 function onPlayerReady(event) {
   let video = event.target.g;
-  $(video).siblings(".to-play").addClass("removed__img");
+  $(video).siblings(".video-iframe__img-plug").addClass("removed__img");
   event.target.playVideo();
 }
 
@@ -146,7 +146,7 @@ function onPlayerReady(event) {
 
 // ================= відгуки початок ===============================
 
-const avatarIcons = document.querySelectorAll(".avatar__icon");
+const avatarIcons = document.querySelectorAll(".coments__icon-item");
 
 if (avatarIcons) {
   for (let index = 0; index < avatarIcons.length; index++) {
@@ -167,11 +167,11 @@ if (avatarIcons) {
 
       var avatarShows = avatarIcon
         .getAttribute("class")
-        .replace("avatar__icon ", "");
+        .replace("coments__icon-item ", "");
       var avatarShow = document.getElementById(avatarShows);
-      var comentShows = avatarIcon.getAttribute("id").replace("icon", "");
+      var comentShows = avatarIcon.getAttribute("id").replace("_icon", "");
       var comentShow = document.getElementById(comentShows);
-      let avatar = document.getElementsByClassName("coment__avatar _active");
+      let avatar = document.getElementsByClassName("coments__avatar _active");
 
       if (avatarIcon) {
         for (let y = 0; y < avatar.length; y++) {
@@ -181,7 +181,7 @@ if (avatarIcons) {
         }
       }
       avatarIcon.classList.add("_active");
-      let icon = document.getElementsByClassName("avatar__icon _active");
+      let icon = document.getElementsByClassName("coments__icon-item _active");
       if (avatarIcon) {
         for (let i = 0; i < icon.length; i++) {
           const iconToggle = icon[i];
@@ -190,7 +190,7 @@ if (avatarIcons) {
         }
       }
       let coment = document.getElementsByClassName(
-        "coment__attachment _active"
+        "coments__item _active"
       );
       if (avatarIcon) {
         for (let c = 0; c < coment.length; c++) {
@@ -261,7 +261,7 @@ function popupClose(popupActive, currentPopup, doUnlock = true) {
 
 function popupFormClose(popupFormActive) {
   popupFormActive.addEventListener("click", function (e) {
-    if (!e.target.closest(".popup__form-content")) {
+    if (!e.target.closest(".popup__content")) {
       popupFormActive.classList.remove("_open");
       bodyUnLock();
     }
@@ -318,7 +318,7 @@ function bodyUnLock() {
 
 document.addEventListener("DOMContentLoaded", function () {
   // let form = document.getElementById("form__phone");
-  let formEmail = document.getElementById("form__email");
+  let formEmail = document.getElementById("form-email");
 
   formEmail.addEventListener("submit", formSendEmail);
 
