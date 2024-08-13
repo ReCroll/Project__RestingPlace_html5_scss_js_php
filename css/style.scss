@@ -175,7 +175,7 @@ body._lock {
 }
 
 @media (max-width: 1229.98px) {
-  [class*='__container'] {
+  [class*='__container']{
     max-width: 970px;
   }
 }
@@ -215,18 +215,18 @@ body._lock {
 
 }
 
-.header__logo {
+.header-logo {
   display: flex;
   z-index: 15;
 
 }
 
-.header__logo h3::first-letter {
+.header-logo h3::first-letter {
   font-family: 'Proxima';
   font-weight: 700;
 }
 
-.header__logo h3 {
+.header-logo h3 {
   font-family: 'Averta';
   font-weight: 00;
   font-size: 27px;
@@ -1732,53 +1732,53 @@ input.error::placeholder {
   column-gap: 50px;
 }
 
-.company__info {
+.footer__info {
   flex: 0 1 300px;
   max-width: 500px;
 }
 
-.company__info>.header__logo {
+.footer__logo {
   margin-bottom: 30px;
 }
 
-.follows__items {
+.footer__icon-list {
   display: flex;
   column-gap: 25px;
   margin-bottom: 20px;
 }
 
-.follow__item {
+.footer__icon-item {
   width: 36px;
   height: 36px;
   transition: transform 0.3s ease 0s;
 }
 
-.follow__item:hover {
+.footer__icon-item:hover {
   transform: scale(1.1);
 }
 
-.user__help-info {
+.footer__links {
   display: flex;
   justify-content: flex-end;
   column-gap: 4%;
   flex: 1 1 auto;
 }
 
-.user__help-column {
+.footer__link-column {
   margin-bottom: 40px;
 }
 
-.user__help-title {
+.footer__column-title {
   margin-bottom: 30px;
 }
 
-.user__help-link a {
+.footer__link-item a {
   color: #000;
   position: relative;
   transition: all 0.3s ease 0s;
 }
 
-.user__help-link a::before {
+.footer__link-item a::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -1790,12 +1790,12 @@ input.error::placeholder {
   transition: all 0.3s ease 0s;
 }
 
-.user__help-link a:hover::before {
+.footer__link-item a:hover::before {
   opacity: 1;
   transition: all 0.3s ease 0s;
 }
 
-.user__help-link:not(:last-child) {
+.footer__link-item:not(:last-child) {
   margin-bottom: 15px;
 }
 
@@ -1807,11 +1807,11 @@ input.error::placeholder {
     column-gap: 50px;
   }
 
-  .company__info {
+  .footer__info {
     flex: 1 1 auto;
   }
 
-  .user__help-info {
+  .footer__links {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -1819,34 +1819,34 @@ input.error::placeholder {
     flex: 1 1 auto;
   }
 
-  // .user__help-column:not(:last-child) {
+  // .footer__link-column:not(:last-child) {
   //     margin-bottom: 30px;
   // }
-  .follows__items {
+  .footer__icon-list {
     margin-bottom: 40px;
   }
 }
 
 @media (max-width: 489.98px) {
 
-  .company__info>.header__logo {
+  .footer__logo {
     justify-content: center;
   }
 
-  .company__info {
+  .footer__info {
     text-align: center;
   }
 
-  .user__help-title {
+  .footer__column-title {
     margin-bottom: 20px;
   }
 
-  .user__help-info {
+  .footer__links {
     flex-direction: column;
     text-align: center;
   }
 
-  .follows__items {
+  .footer__icon-list {
     justify-content: center;
   }
 }
@@ -3101,13 +3101,13 @@ input.error::placeholder {
 
 }
 
-.btn-top-wrapper {
+.btn-top {
   position: fixed;
   right: 50px;
   bottom: 50px;
 }
 
-.top-btn {
+.btn-top__wrap {
   width: 40px;
   height: 40px;
 
@@ -3124,7 +3124,7 @@ input.error::placeholder {
   transition: 0.5s;
 }
 
-.top-arrow {
+.btn-top__arrow {
   width: 10px;
   height: 10px;
   position: absolute;
@@ -3148,14 +3148,14 @@ input.error::placeholder {
   transition: 0.5s;
 }
 
-.top-btn:hover {
+.btn-top__wrap:hover {
   background-color: #2639ED;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
 
-.top-btn:hover .top-arrow {
+.btn-top__wrap:hover .btn-top__arrow {
   border-color: #FFFFFF;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -3163,7 +3163,7 @@ input.error::placeholder {
 }
 
 @media (max-width: em($_768)) {
-  .btn-top-wrapper {
+  .btn-top {
     position: fixed;
     right: calc(20px + (50 - 20) * ((100vw - 320px) / ($_768 - 320)));
     bottom: calc(20px + (50 - 20) * ((100vw - 320px) / ($_768 - 320)));

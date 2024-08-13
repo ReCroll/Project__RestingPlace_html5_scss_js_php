@@ -207,7 +207,7 @@ if (avatarIcons) {
 //============================== POPUP =========================
 
 const body = document.querySelector("body");
-const lockPadding = document.querySelectorAll(".lock__padding");
+const lockPadding = document.querySelectorAll("._lock-padding");
 
 let unlock = true;
 const timeout = 800;
@@ -390,16 +390,15 @@ document.addEventListener("DOMContentLoaded", function () {
 // ==================== BTN-HOME ====================
 $(document).ready(function () {
   $("#btn-home").on("click", "a", function (event) {
-    console.log("work function");
-    //отменяем стандартную обработку нажатия по ссылке
+  
     event.preventDefault();
 
-    //забираем идентификатор бока с атрибута href
+    //забираєм ідентифікатор блока з атрибута href
     var id = $(this).attr("href"),
-      //узнаем высоту от начала страницы до блока на который ссылается якорь
+      //дізнаємось висоту від початку стрінки до блока на який посилається якір
       top = $(id).offset().top;
 
-    //анимируем переход на расстояние - top за 400 мс
+    //анімуємо перехід на відстань - top за 400мс
     $("body,html").animate({ scrollTop: top }, 400);
   });
 });
